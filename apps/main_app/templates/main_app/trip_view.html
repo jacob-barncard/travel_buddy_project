@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Trip Overview</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load staticfiles %}
+    </head>
+    <body>
+
+        {% for trip in trips %}
+          <h1>{{trip.trip_name}}</h1>
+          <p><b>Planned By:</b> {{user.first_name}} {{user.last_name}}</p>
+          <p><b>Description:</b> {{trip.plan}}</p>
+          <p><b>Travel Date From:</b> {{trip.start_date}}</p>
+          <p><b>Travel Date To:</b> {{trip.end_date}}</p>
+        {% endfor %}
+
+        <h3>Other Users Joining the Trip:</h3>
+        <p>{{user.first_name}} {{user.last_name}}</p>
+
+
+      <h3 style="display: inline-block;"> <a href="/dashboard">Home</a> </h3> | <a href="/logout">Logout</a>
+    </body>
+</html>

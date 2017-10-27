@@ -1,0 +1,30 @@
+<h3>Register Here</h3>
+{% if messages %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
+<form action="/register" method="post">
+  {% csrf_token %}
+  <input type="text" name="first_name" placeholder="Enter First Name"><br>
+  <input type="text" name="last_name" placeholder="Enter Last Name"><br>
+  <input type="text" name="email" placeholder="Enter Email"><br>
+  <input type="text" name="password" placeholder="Enter Password"><br>
+  <input type="text" name="c_password" placeholder="Confirm Password"><br>
+  <br><input type="submit" value="Register Here"><br>
+</form>
+
+
+
+
+
+
+<h3>Login Here</h3>
+
+<form action="/login" method="post">
+  {% csrf_token %}
+  <input type="text" name="email" placeholder="Enter Email"><br>
+  <input type="text" name="password" placeholder="Enter Password"><br>
+  <br><input type="submit" value="Login Here"><br>
+</form>

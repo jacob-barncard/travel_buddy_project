@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tavel Buddies</title>
+  </head>
+  <body>
+    <h1>Hello {{request.session.first_name}}!</h1>
+    <h4><a href="make_plan_page">Add Travel Plan</a></h4>
+    <h3>Your Trip Schedules:</h3>
+
+    {% for trip in cur_user.trips.all %}
+      <p><b>Location:</b> <a href="/trip_view/{{trip.id}}">{{trip.trip_name}}</a> | <b>Travel Start Date:</b> {{trip.start_date}} | <b>Travel End Date:</b> {{trip.end_date}} | <b>Plan:</b> {{trip.plan}} | <a href="/dashboard/trip/remove/{{trip.id}}">Remove Trip</a></p>
+    {% endfor %}
+
+
+    <h3>Other Users Travel Plans:</h3>
+
+    {% for trip in trips %}
+      {% if trip not in cur_user.trips.all %}
+        <p><b>Planned By:</b> <b>Location:</b> <a href="/trip_view/{{trip.id}}">{{trip.trip_name}}</a> | <b>Travel Start Date:</b> {{trip.start_date}} | <b>Travel End Date:</b> {{trip.end_date}} | <b>Plan:</b> {{trip.plan}} | <a href="/dashboard/trip/add/{{trip.id}}">Join Trip</a></p>
+      {% endif %}
+    {% endfor %}
+
+
+    {% for user in friend_users %}
+      <p>Name: {{user.first_name}}</p>
+    {% endfor %}
+
+
+    <a href="/logout">Logout here</a>
+  </body>
+</html>
